@@ -24,29 +24,58 @@ weatherApp.getCities = function () {
         // parse the JSON promise resposne and log out readable data (aka data in JSON format)
         .then(function (jsonResponse) {
             console.log(jsonResponse);
+          const formElement = document.querySelector('form');
+          formElement.addEventListener('submit', function (event) {
+            event.preventDefault();
+            // inputElement.value = "";
+
+            // work with the data from the API
+
+            const displayWeather = document.querySelector('.weather-data');
+            displayWeather.textContent = `Weather in ${userChoice}`;
+            // console.log()
+
+            const displayTemp = document.querySelector('.weather-data');
+            const paraTemp = document.createElement('p');
+            paraTemp.textContent = `Temperature:${jsonResponse.main.temp}`;
+            document.querySelector('.weather-data').appendChild(paraTemp);
+
+            const feelsTemp = document.createElement('p');
+            feelsTemp.textContent = `Feels like:${jsonResponse.main.feels_like}`;
+            document.querySelector('.weather-data').appendChild(feelsTemp);
+
+            const minTemp = document.createElement('p');
+            minTemp.textContent = `Minimum Temperature:${jsonResponse.main.temp_min}`;
+            document.querySelector('.weather-data').appendChild(minTemp);
+
+            const maxTemp = document.createElement('p');
+            maxTemp.textContent = `Maximum Temperature:${jsonResponse.main.temp_max}`;
+            document.querySelector('.weather-data').appendChild(maxTemp);
+
+            const paraHumidity = document.createElement('p');
+            paraHumidity.textContent = `Humidity:${jsonResponse.main.humidity}`;
+            document.querySelector('.weather-data').appendChild(paraHumidity);
+            
+            const weatherIcon = document.createElement('i');
+            weatherIcon.textContent = jsonResponse.weather[0].icon;
+            document.querySelector('.weather-data').appendChild(weatherIcon);
+
+            const weatherDescription = document.createElement('p');
+            weatherDescription.textContent = jsonResponse.weather[0].description;
+            document.querySelector('.weather-data').appendChild(weatherDescription);
+          })
         })
+        
 }
-
-
 
 const inputElement = document.querySelector('input');
 const userChoice = inputElement.value;
 // to store the city chosen by user.
 
-const buttonElement = document.querySelector('button');
+// const buttonElement = document.querySelector('button');
 
-const formElement = document.querySelector('form');
-formElement.addEventListener('submit', function (event) {
-    event.preventDefault();
-    // inputElement.value = "";
 
-    // work with the data from the API
-
-    const displayWeather = document.querySelector('.weather-data');
-    displayWeather.textContent = `Weather in ${userChoice}`;
-    // console.log()
-})
-
+// on submit,  weather info - temp/humidity icon, description 
 
 
 //create an initialization method
