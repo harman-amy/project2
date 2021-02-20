@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            border: 0;
+            padding: 0;
+            white-space: nowrap;
+            clip-path: inset(100%);
+            clip: rect(0 0 0 0);
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Weather</h1>
+
+    <div class="enter-city">
+        <form>
+            <div class="form-flex">
+                <label for="name" class="sr-only">Enter City Name</label>
+                <input type="search" name="name" id="name" class="name" placeholder="Enter City">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- dynamic content goes in here -->
+    <div class="weather-data"></div>
+
+
+
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
