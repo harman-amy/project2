@@ -24,15 +24,43 @@ weatherApp.getCities = function () {
         // parse the JSON promise resposne and log out readable data (aka data in JSON format)
         .then(function (jsonResponse) {
             console.log(jsonResponse);
-          const formElement = document.querySelector('form');
-          formElement.addEventListener('submit', function (event) {
-            event.preventDefault();
-            // inputElement.value = "";
+            
+        const formElement = document.querySelector('form');
+        formElement.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+            if(userChoice === ""){
+                alert("Please enter a city");
+            }
+            
+            // object to hold all the temperatures
+
+            const tempObj = {
+                temperature: jsonResponse.main.temp,
+                feelsTemperature: jsonResponse.main.feels_like,
+                minTemperature: jsonResponse.main.temp_min,
+                maxTemperature: jsonResponse.main.temp_max,
+            }
+
+            console.log(tempObj);
+
+              // Temp conversion function
+
+            function converter(value) {
+                for (let properties in tempObj) {
+                    properties = Math.round(tempObj[properties] - 273.15);
+                    console.log(properties);
+                }
+                // jsonResponse.main.temp_max = Math.round(value - 273.15);
+                // console.log(value - 273.15);
+            }
+
+            converter();
 
             // work with the data from the API
 
             const displayWeather = document.querySelector('.weather-data');
-            displayWeather.textContent = `Weather in ${userChoice}`;
+            displayWeather.textContent = `${userChoice}`;
             // console.log()
 
             const displayTemp = document.querySelector('.weather-data');
@@ -63,10 +91,22 @@ weatherApp.getCities = function () {
             const weatherDescription = document.createElement('p');
             weatherDescription.textContent = jsonResponse.weather[0].description;
             document.querySelector('.weather-data').appendChild(weatherDescription);
-          })
+
+            
+
+            // function kelvinToCelcius(value) {
+
+            //     let paraTempC = parseFloat(paraTemp);
+            //     paraTempC = paraTempC - 273.15;
+            //     console.log(paraTempC);
+            //     }
+            //   kelvinToCelcius(300);
+            })
         })
         
 }
+
+
 
 const inputElement = document.querySelector('input');
 const userChoice = inputElement.value;
