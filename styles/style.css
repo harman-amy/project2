@@ -286,3 +286,7 @@ main {
 h1 {
   text-transform: uppercase;
 }
+
+h4 {
+  text-transform: capitalize;
+}
