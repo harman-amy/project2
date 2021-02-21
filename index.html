@@ -11,27 +11,20 @@
 </head>
 
 <body>
-    <main>
-    <main class="enter-city">
-        <h1>Weather</h1>
-        <form>
-            <div class="form-flex">
-                <label for="name" class="sr-only">Enter City Name</label>
-                <input type="search" name="name" id="name" class="name" placeholder="Enter City">
+    <header>
+        <main>
+            <div class="display-weather">
             </div>
-            <button type="submit">Submit</button>
-        </form>
-    </main>
 
-    <!-- dynamic content goes in here -->
-    <div class="weather-data"></div>
+            <form>
+                <h2>Search Location</h2>
+                <label for="city" class="sr-only">Search City</label>
+                <input type="text" name="city" id="city" placeholder="Enter City">
+            </form>
 
-    </main>
-
-
-
+        </main>
+    </header>
 
     <script src="./script.js"></script>
 </body>
-
 </html>
