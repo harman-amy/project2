@@ -7,3 +7,93 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 *, *:before, *:after {box-sizing: inherit}
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
+
+header,
+.header-cloudy{
+    height: 100vh;
+    background-image: url(./assets/backgroundImage.jpg);
+    background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* overflow: hidden; */
+}
+
+body {
+    color: white;
+    /* margin: 0; */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+input {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 10px 0 10px 10px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80vh;
+    /* padding: 0 15rem; */
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+h4{
+    text-transform: capitalize;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.temperature{
+    font-size: 3.8rem;
+    margin: 0;
+}
+
+.display-weather{
+    /* background: rgba(14, 13, 13, 0.2); */
+    position: relative;
+    top: 5%;
+}
+
+.header-clear{
+    background-image: url(./assets/clear.jpg);
+    /* background-color: black; */
+    background-position: center;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* media queries */
+
+@media (max-width:800px) {
+    main{
+        flex-direction: column-reverse;
+    }
+
+    form{
+        width: 40%;
+    }
+
+    form h2{
+        text-align: center;
+    }
+
+    div{
+        text-align: center;
+    }
+
+}
