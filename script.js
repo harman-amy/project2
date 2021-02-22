@@ -63,6 +63,14 @@ weatherApp.displayApiInfo = function (jsonData) {
   currentTemp.textContent = `${Math.round(jsonData.main.temp - 273.15)} °C`;
   divElement.appendChild(currentTemp);
 
+  // create <i> to hold weather icon
+  const weatherIcon = document.createElement('p');
+  weatherIcon.textContent = jsonData.weather[0].icon;
+
+  const iconUrl = document.createElement('url');
+  iconUrl.innerHTML = `<img src= http://openweathermap.org/img/w/${jsonData.weather[0].icon}.png>`;
+  divElement.appendChild(iconUrl);
+
   // create h3 tags for information like temp feels and humidity.
 
   const feelsTemp = document.createElement('h3');
