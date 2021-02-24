@@ -5,26 +5,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather App</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/d53415cc50.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
     <header>
-        <main>
-            <div class="flex-container">
-                <div class="weather"></div>
-                <div class="weather-conditions"></div>
-            </div>
-            
-            <form>
-                <h2>Search Location</h2>
-                <label for="city" class="sr-only">Search City</label>
-                <input type="text" name="city" id="city" placeholder="Enter City">
-            </form>
-    
-        </main>
+        <div class="wrapper">
+            <main>
+                <div class="flex-container scale">
+                    <div class="weather"></div>
+                    <div class="temp-icon"></div>
+                    <div class="weather-conditions"></div>
+                </div>
+                
+                <div class="form-contact-container">
+
+                    <form>
+                        <!-- <>Search Location</> -->
+                        <label for="city">Search Location</label>
+                        <!-- <i class="fas fa-search"></i> -->
+                        <input type="text" name="city" id="city" placeholder="Enter City" required>
+                    </form>
+
+                    <!-- <div class="designer-info">
+                        <p>By Amy Bradford & Harman Dhamija <a href="https://github.com/harman-amy"><i class="fab fa-github"></i></a>
+                        </p>
+                        <p>Created at<a href="https://junocollege.com/">Juno College</a></p>
+                    </div> -->
+                </div>
+
+            </main>
+
+            <footer>
+                
+
+                <!-- <div class="juno-logo">
+                    <p>>_</p>
+                </div> -->
+            </footer>
+        </div>
     </header>
 
     <script src="./script.js"></script>

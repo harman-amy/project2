@@ -33,25 +33,27 @@ weatherApp.getApiInfo = function (userChoice) {
 
       // return JSON response so that it can be used in the next function
     })
-
-    // after we get back data in JSON file, then do the following.
     .then(function (jsonResponse) {
       // jsonResponse will represent the data from JSON file
       console.log(jsonResponse);
+      // after we get back data in JSON file, then do the following.
 
       // display the data in this method or call the displayApiinfo() method within this function after its completed.
       // because we need info from api(jsonResponse) from this method(getApiInfo) for method(displayApiInfo).
 
-      updateBackground(jsonResponse);
+      weatherApp.updateBackground(jsonResponse);
 
       weatherApp.displayApiInfo(jsonResponse);
-      // weatherApp.displayApiInfo(jsonResponse);
 
+    })
+    .catch(error => {
+      // console.log(error);
+      alert("The city is invalid");
     })
 }
 
 // function for updating background images based on weather conditions 
-function updateBackground(jsonDataIf) {
+weatherApp.updateBackground = function(jsonDataIf) {
 
   const headerElement = document.querySelector('header');
   // console.log(headerElement);
@@ -61,7 +63,7 @@ function updateBackground(jsonDataIf) {
   } else if (jsonDataIf.weather[0].main == "Clouds") {
     headerElement.setAttribute('class', 'header-cloudy');
   } else if (jsonDataIf.weather[0].main == "Rain") {
-    console.log("Display Rainy image");
+    headerElement.setAttribute('class', 'header-rain');
   } else if (jsonDataIf.weather[0].main == "Snow") {
     console.log("Display Snowy image");
   } else if (jsonDataIf.weather[0].main == "Fog") {
@@ -70,8 +72,6 @@ function updateBackground(jsonDataIf) {
     console.log("Display clear image");
   }
 }
-
-// function for error message
 
 
 // Define a method to display jsonResponse from Api.
@@ -83,6 +83,7 @@ weatherApp.displayApiInfo = function (jsonData) {
   // console.log(divElement);
 
   weatherDiv.innerHTML = "";
+  // weatherDiv.setAttribute('class', 'scale')
 
   // create a 'h1' tag to contain the city name.
   const h1Element = document.createElement('h1');
@@ -90,36 +91,43 @@ weatherApp.displayApiInfo = function (jsonData) {
   // console.log(h1Element);
   weatherDiv.appendChild(h1Element);
 
-  const weatherDescription = document.createElement('h3');
+  const weatherDescription = document.createElement('p');
   weatherDescription.textContent = jsonData.weather[0].description;
   weatherDescription.setAttribute('class', 'capitalize');
+  // weatherDescription.setAttribute('class', 'capitalize scale');
+
   weatherDiv.appendChild(weatherDescription);
 
-  // create h2 tag to hold temperature information
-  const currentTemp = document.createElement('h2');
+  // query the document and find the div.temp-icoons to hold temperature information & weather icon together(flex it to display side by side).
+  const tempIcons = document.querySelector('.temp-icon');
+  tempIcons.innerHTML = "";
+
+  const currentTemp = document.createElement('p');
   currentTemp.textContent = `${Math.round(jsonData.main.temp - 273.15)}°C`;
   currentTemp.setAttribute('class', 'temperature');
-  weatherDiv.appendChild(currentTemp);
+  tempIcons.appendChild(currentTemp);
 
-  // create <div> to hold weather icon
-  const iconUrl = document.createElement('div');
+  // create <p> to hold weather icon
+  const iconUrl = document.createElement('p');
   iconUrl.innerHTML = `<img src= http://openweathermap.org/img/w/${jsonData.weather[0].icon}.png>`;
-  weatherDiv.appendChild(iconUrl);
+  tempIcons.appendChild(iconUrl);
+
 
   // query the document and find the (div class = "display-weather-conditions") where we will contain the weather-condtions content.
   const conditionsDiv = document.querySelector('.weather-conditions')
   conditionsDiv.innerHTML = "";
-  // create h3 tags for information like temp feels and humidity.
+  // to empty it after the user inputs a new city.
 
-  const feelsTemp = document.createElement('h3');
+  // create h3 tags for information like temp feels and humidity and append it to the condtions div.
+  const feelsTemp = document.createElement('p');
   feelsTemp.textContent = `Feels like: ${Math.round(jsonData.main.feels_like - 273.15)} °C`;
   conditionsDiv.appendChild(feelsTemp);
 
-  const humidity = document.createElement('h3');
+  const humidity = document.createElement('p');
   humidity.textContent = `Humidity: ${jsonData.main.humidity}%`;
   conditionsDiv.appendChild(humidity);
 
-  const wind = document.createElement('h3');
+  const wind = document.createElement('p');
   wind.textContent = `Wind: ${jsonData.wind.speed}km/h`;
   conditionsDiv.appendChild(wind);
 
@@ -135,17 +143,16 @@ formElement.addEventListener('submit', function (event) {
 
   //2. to get the user input from the form
   const inputElement = document.querySelector('input');
-  // console.log(inputElement.value)
+  console.log(inputElement);
   // capturing the value from the input on submit.
 
   //3. storing input into a variable
-  const cityName = inputElement.value;
-  // cityName.setAttribute('class', 'cityname');
-  // console.log(cityName)
+  // const cityName = inputElement.value;
 
-  // errorMessage(inputElement.value);
+  // calling errorMessage function to capture value of userInput.name and pass it as a variable whne defining the function in getApiInfo.
+  // weatherApp.errorMessage(inputElement.value);
 
-  weatherApp.getApiInfo(inputElement.value)
+  weatherApp.getApiInfo(inputElement.value);
 
   //clear the input after the event is saved & acted upon. 
   inputElement.value = "";
@@ -157,6 +164,3 @@ weatherApp.init = function () {
 }
 
 weatherApp.init();
-
-
-      
