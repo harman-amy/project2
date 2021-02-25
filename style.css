@@ -33,12 +33,11 @@ header,
     background-color: black;
     background-size: cover;
     background-repeat: no-repeat;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .header-clear{
     background-image: url(./assets/clear.jpg);
-    /* background-color: black; */
     background-position: center;
     height: 100vh;
     background-size: cover;
@@ -47,7 +46,14 @@ header,
 
 .header-rain{
     background-image: url(./assets/rain.jpg);
-    /* background-color: black; */
+    background-position: center;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.header-toronto{
+    background-image: url(./assets/toronto.jpg);
     background-position: center;
     height: 100vh;
     background-size: cover;
@@ -59,12 +65,13 @@ main {
     justify-content: space-around;
     align-items: center;
     height: 80vh;
+    margin-top: 5%;
 }
 
 .flex-container{
-    position: relative;
-    top: 7%;
     width: 35%;
+    animation-name: dynamic;
+    animation-duration: 6s;
 }
 
 .temp-icon{
@@ -72,9 +79,12 @@ main {
     align-items: center;
 }
 
+/* form styles */
+
 form {
     display: flex;
     flex-direction: column;
+    position: relative;
     /* width: 25%; */
 }
 
@@ -102,6 +112,56 @@ input:required{
     box-shadow: none;
 }
 
+.error-message{
+    display: none;
+    position: absolute;
+    top: 90px;
+    left: 5px;
+}
+
+/* footer styles */
+
+a{
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+}
+
+.designer-info p{
+    text-align: center;
+    font-size: 0.7rem;
+    margin: 0;
+}
+
+.designer-info a{
+    font-size: 0.8rem;
+    transition: color 0.4s;
+}
+
+.designer-info a:hover,
+.designer-info a:focus{
+    color:#ea593e;
+}
+
+.github-icon{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.github-icon a{
+    transition: font-size 0.4s;
+}
+
+.github-icon a:hover,
+.github-icon a:focus{
+    font-size: 2rem;
+}
+
+/* footer styles ends */
+
+/* dynamic content styles */
+
 h1{
     font-size: 1.8rem;
     text-transform: uppercase;
@@ -122,32 +182,18 @@ p{
     margin: 0;
 }
 
-.designer-info p{
-    text-align: center;
-    font-size: 0.7rem;
-}
+/* .scale {
+    animation: scale 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+} */
 
-.designer-info a{
-    text-decoration: none;
-    color: white;
-    padding: 5px;
-}
-
-.designer-info a:hover{
-    color:#ea593e;
-}
-
-
-
-/* .juno-logo p{
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    border: 1px soild aliceblue;
-    text-align: center;
-    font-size: 1rem;
-    border: 3px solid #ea593e;
-    color: #ea593e;
+/* @keyframes scale {
+    0% {
+        transform: scale(0.5);
+    }
+    
+    100% {
+        transform: scale(1);
+    }
 } */
 
 /* media queries */
@@ -155,11 +201,16 @@ p{
 @media (max-width:850px) {
     main{
         flex-direction: column-reverse;
-        justify-content: center;
+        justify-content: space-evenly;
+    }
+
+    form{
+        text-align: center;
     }
 
     .flex-container{
         text-align: center;
+        width: 100%;
     } 
 
     .temp-icon{
@@ -170,16 +221,7 @@ p{
         margin-left: 20%;
     }
 
-
-}
-
-    /* form{
-        width: 40%;
+    footer{
+        margin-top: 5%;
     }
-
-    form h2,
-    div{
-        text-align: center;
-    }
-
 }

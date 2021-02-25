@@ -45,18 +45,20 @@ weatherApp.getApiInfo = function (userChoice) {
 
       weatherApp.displayApiInfo(jsonResponse);
 
+      // errorMessage.style.display = "none";
+
+
     })
-    .catch(error => {
-      // console.log(error);
-      alert("The city is invalid");
+    .catch(function (error) {
+      const errorMessage = document.querySelector('.error-message');
+      errorMessage.style.display = "block";
     })
 }
 
 // function for updating background images based on weather conditions 
-weatherApp.updateBackground = function(jsonDataIf) {
+weatherApp.updateBackground = function (jsonDataIf) {
 
   const headerElement = document.querySelector('header');
-  // console.log(headerElement);
 
   if (jsonDataIf.weather[0].main == "Clear") {
     headerElement.setAttribute('class', 'header-clear');
@@ -145,12 +147,6 @@ formElement.addEventListener('submit', function (event) {
   const inputElement = document.querySelector('input');
   console.log(inputElement);
   // capturing the value from the input on submit.
-
-  //3. storing input into a variable
-  // const cityName = inputElement.value;
-
-  // calling errorMessage function to capture value of userInput.name and pass it as a variable whne defining the function in getApiInfo.
-  // weatherApp.errorMessage(inputElement.value);
 
   weatherApp.getApiInfo(inputElement.value);
 
