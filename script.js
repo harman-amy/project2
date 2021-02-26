@@ -65,15 +65,19 @@ weatherApp.updateBackground = function (jsonDataIf) {
     bodyElement.setAttribute('class', 'clear');
   } else if (jsonDataIf.weather[0].main == "Clouds") {
     bodyElement.setAttribute('class', 'cloudy');
+  } else if (jsonDataIf.weather[0].main == "Drizzle") {
+    bodyElement.setAttribute('class', 'drizzle');
   } else if (jsonDataIf.weather[0].main == "Rain") {
     bodyElement.setAttribute('class', 'rain');
   } else if (jsonDataIf.weather[0].main == "Snow") {
-    console.log("Display Snowy image");
-  } else if (jsonDataIf.weather[0].main == "Fog") {
-    console.log("Display Foggy image");
-  } else {
-    console.log("Display clear image");
-  }
+    bodyElement.setAttribute('class', 'snow');
+  } else if (jsonDataIf.weather[0].main == "Fog" || "Mist") {
+    bodyElement.setAttribute('class', 'mist');
+  } else if (jsonDataIf.weather[0].main == "Smoke" || "Haze") {
+    bodyElement.setAttribute('class', 'haze');
+  } else if (jsonDataIf.weather[0].main == "Thunderstorm") {
+    bodyElement.setAttribute('class', 'thunderstorm');
+  } 
 }
 
 

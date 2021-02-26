@@ -9,43 +9,63 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
 
-html{
+html {
     font-size: 125%;
     margin: 0;
     padding: 0;
-}
-
-
-/* background image styles */
-
-/* DRY code for background images and use short hand */
-body,
-.cloudy{
-    height: 100vh;
-    background-image: url(./assets/backgroundImage.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
     color: white;
 }
 
-.clear{
-    background-image: url(./assets/clear.jpg);
-    background-position: center;
+/* background image styles */
+
+body,
+.cloudy, 
+.clear, 
+.drizzle, 
+.rain,
+.thunderstorm, 
+.snow,
+.mist,
+.haze {
     height: 100vh;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    overflow: hidden;
+}
+.cloudy {
+  background-image: url(./assets/weather/cloudy.jpg);
 }
 
-.rain{
-    background-image: url(./assets/rain.jpg);
-    background-position: center;
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
+.clear {
+    background-image: url(./assets/weather/clear.jpg);
 }
 
-.wrapper{
+.drizzle {
+    background-image: url(./assets/weather/drizzle.jpg);
+}
+
+.rain {
+    background-image: url(./assets/weather/rain.jpg);
+}
+
+.thunderstorm {
+    background-image: url(./assets/weather/thunderstorm.jpg);
+}
+
+.snow {
+    background-image: url(./assets/weather/snow.jpg);
+}
+
+.mist {
+    background-image: url(./assets/weather/mist.jpg);
+}
+
+.haze {
+    background-image: url(./assets/weather/smoke.jpg);
+}
+
+.wrapper {
     width: 90%;
     margin: 0 auto;
     max-width: 1200px;
@@ -59,13 +79,13 @@ main {
     margin-top: 5%;
 }
 
-.flex-container{
+.flex-container {
     width: 35%;
     animation-name: dynamic;
     animation-duration: 6s;
 }
 
-.temp-icon{
+.temp-icon {
     display: flex;
     align-items: center;
 }
@@ -78,7 +98,7 @@ form {
     position: relative;
 }
 
-label{
+label {
     font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 7%;
@@ -98,11 +118,11 @@ input {
     background-position: 5px;
 }
 
-input:required{
+input:required {
     box-shadow: none;
 }
 
-.error-message{
+.error-message {
     display: none;
     position: absolute;
     top: 90px;
@@ -111,61 +131,61 @@ input:required{
 
 /* footer styles */
 
-a{
+a {
     text-decoration: none;
     color: white;
     padding: 5px;
 }
 
-.juno-college p{
+.juno-college p {
     text-align: center;
     font-size: 0.7rem;
     margin: 0;
 }
 
-.juno-college a{
+.juno-college a {
     font-size: 0.8rem;
     transition: color 0.4s;
 }
 
 .juno-college a:hover,
-.juno-college a:focus{
+.juno-college a:focus {
     color:#ea593e;
 }
 
-.contact-info{
+.contact-info {
     font-size: 1.5rem;
     display: flex;
     justify-content: center;
 }
 
-.contact-info a{
+.contact-info a {
     transition: font-size 0.4s;
 }
 
 .contact-info a:hover,
-.contact-info a:focus{
+.contact-info a:focus {
     font-size: 2rem;
 }
 
 /* dynamic content styles */
 
-h1{
+h1 {
     font-size: 1.8rem;
     text-transform: uppercase;
     margin-bottom: -15px;
 }
 
-p{
+p {
     font-size: 1rem;
     font-weight: bold;
 }
 
-.capitalize{
+.capitalize {
     text-transform: capitalize;
 }
 
-.temperature{
+.temperature {
     font-size: 3rem;
     margin: 0;
 }
@@ -194,24 +214,24 @@ p{
         justify-content: space-evenly;
     }
 
-    form{
+    form {
         text-align: center;
     }
 
-    .flex-container{
+    .flex-container {
         text-align: center;
         width: 100%;
     } 
 
-    .temp-icon{
+    .temp-icon {
         justify-content: center;
     }
 
-    .temp-icon img{
+    .temp-icon img {
         margin-left: 20%;
     }
 
-    footer{
+    footer {
         margin-top: 5%;
     }
 }
