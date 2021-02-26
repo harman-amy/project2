@@ -59,14 +59,14 @@ weatherApp.getApiInfo = function (userChoice, firstPageLoad) {
 // function for updating background images based on weather conditions 
 weatherApp.updateBackground = function (jsonDataIf) {
 
-  const headerElement = document.querySelector('header');
+  const bodyElement = document.querySelector('body');
 
   if (jsonDataIf.weather[0].main == "Clear") {
-    headerElement.setAttribute('class', 'header-clear');
+    bodyElement.setAttribute('class', 'clear');
   } else if (jsonDataIf.weather[0].main == "Clouds") {
-    headerElement.setAttribute('class', 'header-cloudy');
+    bodyElement.setAttribute('class', 'cloudy');
   } else if (jsonDataIf.weather[0].main == "Rain") {
-    headerElement.setAttribute('class', 'header-rain');
+    bodyElement.setAttribute('class', 'rain');
   } else if (jsonDataIf.weather[0].main == "Snow") {
     console.log("Display Snowy image");
   } else if (jsonDataIf.weather[0].main == "Fog") {

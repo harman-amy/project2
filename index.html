@@ -12,43 +12,39 @@
 </head>
 
 <body>
-    <header>
-        <div class="wrapper">
-            <main>
-                <div class="flex-container">
-                    <div class="weather"></div>
-                    <div class="temp-icon"></div>
-                    <div class="weather-conditions"></div>
-                </div>
+    <div class="wrapper">
+        <main>
+            <div class="flex-container">
+                <div class="weather"></div>
+                <div class="temp-icon"></div>
+                <div class="weather-conditions"></div>
+            </div>
 
-                <div class="form-contact-container">
+            <div class="form-contact-container">
+                <form>
+                    <label for="city">Search Location</label>
+                    <input type="text" name="city" id="city" placeholder="Enter City" required>
+                    <span class="error-message">No matching city found!</span>
+                </form>
+            </div>
 
-                    <form>
-                        <!-- <>Search Location</> -->
-                        <label for="city">Search Location</label>
-                        <!-- <i class="fas fa-search"></i> -->
-                        <input type="text" name="city" id="city" placeholder="Enter City" required>
-                        <span class="error-message">No matching city found!</span>
-                    </form>
+        </main>
 
-                </div>
 
-            </main>
+        <footer>
 
-            <footer>
-                <div class="designer-info">
-                    <p>Created at<a href="https://junocollege.com/">Juno College of Technology</a></p>
-                </div>
+            <div class="juno-college">
+                <p>Created at<a href="https://junocollege.com/">Juno College of Technology</a></p>
+            </div>
 
-                <div class="github-icon">
-                    <a href="https://github.com/harman-amy"><i class="fab fa-github"></i></a>
-                    <a href="https://github.com/harman-amy"><i class="fab fa-linkedin"></i></a>
+            <div class="contact-info">
+                <a href="https://github.com/harman-amy"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/harman-amy"><i class="fab fa-linkedin"></i></a>
 
-                </div>
+            </div>
 
-            </footer>
-        </div>
-    </header>
+        </footer>
+    </div>
 
     <script src="./script.js"></script>
 </body>

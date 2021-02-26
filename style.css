@@ -15,28 +15,21 @@ html{
     padding: 0;
 }
 
-body {
-    color: white;
-    /* font-size: 2rem; */
-}
 
-.wrapper{
-    width: 90%;
-    margin: 0 auto;
-    max-width: 1200px;
-}
+/* background image styles */
 
-header,
-.header-cloudy{
+/* DRY code for background images and use short hand */
+body,
+.cloudy{
     height: 100vh;
     background-image: url(./assets/backgroundImage.jpg);
-    background-color: black;
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
+    color: white;
 }
 
-.header-clear{
+.clear{
     background-image: url(./assets/clear.jpg);
     background-position: center;
     height: 100vh;
@@ -44,7 +37,7 @@ header,
     background-repeat: no-repeat;
 }
 
-.header-rain{
+.rain{
     background-image: url(./assets/rain.jpg);
     background-position: center;
     height: 100vh;
@@ -52,12 +45,10 @@ header,
     background-repeat: no-repeat;
 }
 
-.header-toronto{
-    background-image: url(./assets/toronto.jpg);
-    background-position: center;
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
+.wrapper{
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 main {
@@ -85,7 +76,6 @@ form {
     display: flex;
     flex-direction: column;
     position: relative;
-    /* width: 25%; */
 }
 
 label{
@@ -127,38 +117,36 @@ a{
     padding: 5px;
 }
 
-.designer-info p{
+.juno-college p{
     text-align: center;
     font-size: 0.7rem;
     margin: 0;
 }
 
-.designer-info a{
+.juno-college a{
     font-size: 0.8rem;
     transition: color 0.4s;
 }
 
-.designer-info a:hover,
-.designer-info a:focus{
+.juno-college a:hover,
+.juno-college a:focus{
     color:#ea593e;
 }
 
-.github-icon{
+.contact-info{
     font-size: 1.5rem;
     display: flex;
     justify-content: center;
 }
 
-.github-icon a{
+.contact-info a{
     transition: font-size 0.4s;
 }
 
-.github-icon a:hover,
-.github-icon a:focus{
+.contact-info a:hover,
+.contact-info a:focus{
     font-size: 2rem;
 }
-
-/* footer styles ends */
 
 /* dynamic content styles */
 
