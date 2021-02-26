@@ -182,11 +182,13 @@ p{
     margin: 0;
 }
 
-/* .scale {
-    animation: scale 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-} */
+/* animations styles */
 
-/* @keyframes scale {
+.scale {
+    animation: scale 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+} 
+
+@keyframes scale {
     0% {
         transform: scale(0.5);
     }
@@ -194,7 +196,7 @@ p{
     100% {
         transform: scale(1);
     }
-} */
+}
 
 /* media queries */
 

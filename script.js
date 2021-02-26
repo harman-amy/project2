@@ -7,7 +7,7 @@ weatherApp.apiKey = "75bca0532ad0bc22fa4ca7f257f8dbfe";
 
 //create a method (AKA function on the app object) which requests information from the API
 //logs it to the console
-weatherApp.getApiInfo = function (userChoice) {
+weatherApp.getApiInfo = function (userChoice, firstPageLoad) {
   // use the URL constructor to specify the parameters we wish to inculde in our API endpoint (aka in the request we are making in the API.)
   const url = new URL(weatherApp.apiUrl);
   url.search = new URLSearchParams({
@@ -41,9 +41,10 @@ weatherApp.getApiInfo = function (userChoice) {
       // display the data in this method or call the displayApiinfo() method within this function after its completed.
       // because we need info from api(jsonResponse) from this method(getApiInfo) for method(displayApiInfo).
 
+
       weatherApp.updateBackground(jsonResponse);
 
-      weatherApp.displayApiInfo(jsonResponse);
+      weatherApp.displayApiInfo(jsonResponse, firstPageLoad);
 
       // errorMessage.style.display = "none";
 
@@ -77,15 +78,23 @@ weatherApp.updateBackground = function (jsonDataIf) {
 
 
 // Define a method to display jsonResponse from Api.
-weatherApp.displayApiInfo = function (jsonData) {
+weatherApp.displayApiInfo = function (jsonData, firstPageLoad) {
   // jsonData is represnting data from jsonResponse as we will end up calling this method within getApiInfo method because otehrwise we wont have access to that information as its locally scoped in getApiInfo and we will end up calling this method within getApiInfo.  
 
   // query the document and find the (div class = "display-weather") where we will contain the dynamic content.
   const weatherDiv = document.querySelector('.weather');
+
+  if (!firstPageLoad) {
+    // ! defines is not
+    weatherDiv.classList.add('scale');
+  };
   // console.log(divElement);
 
   weatherDiv.innerHTML = "";
   // weatherDiv.setAttribute('class', 'scale')
+
+  const errorMessage = document.querySelector('.error-message');
+  errorMessage.style.display = "none";
 
   // create a 'h1' tag to contain the city name.
   const h1Element = document.createElement('h1');
@@ -138,8 +147,8 @@ weatherApp.displayApiInfo = function (jsonData) {
 
 // event handler on form to get userChoice
 
-const formElement = document.querySelector('form');
-formElement.addEventListener('submit', function (event) {
+weatherApp.formElement = document.querySelector('form');
+weatherApp.formElement.addEventListener('submit', function (event) {
   event.preventDefault();
   // prevent page from refreshing
 
@@ -148,14 +157,20 @@ formElement.addEventListener('submit', function (event) {
   console.log(inputElement);
   // capturing the value from the input on submit.
 
-  weatherApp.getApiInfo(inputElement.value);
+  weatherApp.getApiInfo(inputElement.value, firstPageLoad = false);
+
 
   //clear the input after the event is saved & acted upon. 
   inputElement.value = "";
+
+  const weatherDiv = document.querySelector('.weather');
+
+  weatherDiv.classList.remove('scale');
 })
 
 weatherApp.init = function () {
-  weatherApp.getApiInfo("toronto");
+  let firstPageLoad = true;
+  weatherApp.getApiInfo("toronto", firstPageLoad);
   // we are running this function because we need Toronto data on default load screen.
 }
 
