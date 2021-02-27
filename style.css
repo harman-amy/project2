@@ -22,11 +22,9 @@ body,
 .cloudy, 
 .clear, 
 .drizzle, 
-.rain,
 .thunderstorm, 
 .snow,
-.mist,
-.haze {
+.mist{
     height: 100vh;
     background-position: center;
     background-size: cover;
@@ -34,7 +32,7 @@ body,
     overflow: hidden;
 }
 .cloudy {
-  background-image: url(./assets/weather/cloudy.jpg);
+    background-image: url(./assets/weather/cloudy.jpg);
 }
 
 .clear {
@@ -43,10 +41,6 @@ body,
 
 .drizzle {
     background-image: url(./assets/weather/drizzle.jpg);
-}
-
-.rain {
-    background-image: url(./assets/weather/rain.jpg);
 }
 
 .thunderstorm {
@@ -61,17 +55,14 @@ body,
     background-image: url(./assets/weather/mist.jpg);
 }
 
-.haze {
-    background-image: url(./assets/weather/smoke.jpg);
-}
 
-.wrapper {
+.wrapper{
     width: 90%;
     margin: 0 auto;
     max-width: 1200px;
 }
 
-main {
+main{
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -79,15 +70,35 @@ main {
     margin-top: 5%;
 }
 
-.flex-container {
+.flex-container{
     width: 35%;
-    animation-name: dynamic;
-    animation-duration: 6s;
 }
 
-.temp-icon {
+.temperature{
     display: flex;
     align-items: center;
+}
+
+/* dynamic content styles */
+
+h1{
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: -15px;
+}
+
+p{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.temperature-font{
+    font-size: 3rem;
+    margin: 0;
 }
 
 /* form styles */
@@ -98,13 +109,13 @@ form {
     position: relative;
 }
 
-label {
+label{
     font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 7%;
 }
 
-input {
+input{
     font-size: 1rem;
     text-indent: 15%;
     border: none;
@@ -112,98 +123,94 @@ input {
     border-radius: 10px;
     padding: 10px 0 10px 10px;
     background: rgba(255, 255, 255, 0.7);
-    background-image: url(./assets/search-solid.svg);
+    background-image: url(./assets/search-icon.svg);
     background-repeat: no-repeat;
     background-size: 30px 20px;
     background-position: 5px;
 }
 
-input:required {
+input:required{
     box-shadow: none;
 }
 
-.error-message {
+.error-message{
+    font-size: 0.9rem;
     display: none;
     position: absolute;
     top: 90px;
-    left: 5px;
+    left: 10px;
 }
 
 /* footer styles */
 
-a {
+a{
     text-decoration: none;
     color: white;
     padding: 5px;
 }
 
-.juno-college p {
+.juno-college p{
     text-align: center;
     font-size: 0.7rem;
     margin: 0;
 }
 
-.juno-college a {
+.juno-college a{
     font-size: 0.8rem;
     transition: color 0.4s;
 }
 
 .juno-college a:hover,
-.juno-college a:focus {
+.juno-college a:focus{
     color:#ea593e;
 }
 
-.contact-info {
+.contact-info{
     font-size: 1.5rem;
     display: flex;
     justify-content: center;
 }
 
-.contact-info a {
+.contact-info a{
     transition: font-size 0.4s;
 }
 
 .contact-info a:hover,
-.contact-info a:focus {
+.contact-info a:focus{
     font-size: 2rem;
 }
 
-/* dynamic content styles */
+/* animations */
 
-h1 {
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    margin-bottom: -15px;
+.fade-in {
+	animation: fade-in 0.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
-p {
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.capitalize {
-    text-transform: capitalize;
-}
-
-.temperature {
-    font-size: 3rem;
-    margin: 0;
-}
-
-/* animations styles */
-
-.scale {
-    animation: scale 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-} 
-
-@keyframes scale {
+@keyframes fade-in {
     0% {
-        transform: scale(0.5);
-    }
-    
+    transform: translateX(30px);
+    opacity: 0;
+}
     100% {
-        transform: scale(1);
-    }
+    transform: translateX(0);
+    opacity: 1;
+}
+
+}
+
+.fade-in-2{
+    animation-name: fade-in-2;
+    animation-duration: 0.1s;
+}
+
+@keyframes fade-in-2 {
+    0% {
+    opacity: 0;
+}
+    100% {
+    opacity: 1;
+}
+
 }
 
 /* media queries */
@@ -214,24 +221,61 @@ p {
         justify-content: space-evenly;
     }
 
-    form {
+    form{
         text-align: center;
     }
 
-    .flex-container {
+    .error-message{
+        left: 23px;
+    }
+
+    .flex-container{
         text-align: center;
         width: 100%;
     } 
 
-    .temp-icon {
+    .temperature{
         justify-content: center;
     }
 
-    .temp-icon img {
+    .temperature img{
         margin-left: 20%;
     }
 
-    footer {
+    footer{
         margin-top: 5%;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .weather h1{
+        font-size: 1.6rem;
+    }
+
+    .weather-conditions p{
+        margin: 10px;
+    }
+
+    input{
+        font-size: 0.8rem;
+    }
+
+    label{
+        font-size: 1.1rem;
+    }
+
+    .error-message{
+        font-size: 0.8rem;
+        top: 80px;
+        left: 10px;
+    }
+
+    .juno-college a{
+        font-size: 0.7rem;
+    }
+
+    .contact-info{
+        font-size: 1.4rem;
     }
 }
