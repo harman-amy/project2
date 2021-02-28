@@ -216,6 +216,11 @@ a{
 /* media queries */
 
 @media (max-width:850px) {
+
+    .clear {
+    background-position: left;
+    }
+
     main{
         flex-direction: column-reverse;
         justify-content: space-evenly;
@@ -249,7 +254,7 @@ a{
 
 @media (max-width: 400px) {
 
-    .weather h1{
+    .city-div h1{
         font-size: 1.6rem;
     }
 

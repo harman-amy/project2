@@ -51,28 +51,28 @@ weatherApp.displayApiInfo = function (jsonData, firstPageLoad) {
     flexDiv.classList.add('fade-in');
   };
 
-  const weatherDiv = document.querySelector('.weather');
-  weatherDiv.innerHTML = "";
+  const cityDiv = document.querySelector('.city-div');
+  cityDiv.innerHTML = "";
 
   const errorMessage = document.querySelector('.error-message');
   errorMessage.style.display = "none";
 
   const h1Element = document.createElement('h1');
   h1Element.textContent = `${jsonData.name}, ${jsonData.sys.country}`;
-  weatherDiv.appendChild(h1Element);
+  cityDiv.appendChild(h1Element);
 
   const weatherDescription = document.createElement('p');
   weatherDescription.textContent = jsonData.weather[0].description;
   weatherDescription.setAttribute('class', 'capitalize')
-  weatherDiv.appendChild(weatherDescription);
+  cityDiv.appendChild(weatherDescription);
 
-  const tempIcons = document.querySelector('.temperature');
-  tempIcons.innerHTML = "";
+  const tempDiv = document.querySelector('.temperature');
+  tempDiv.innerHTML = "";
 
   const currentTemp = document.createElement('p');
   currentTemp.textContent = `${Math.round(jsonData.main.temp - 273.15)}°C`;
   currentTemp.setAttribute('class', 'temperature-font');
-  tempIcons.appendChild(currentTemp);
+  tempDiv.appendChild(currentTemp);
 
   const conditionsDiv = document.querySelector('.weather-conditions')
   conditionsDiv.innerHTML = "";
@@ -86,7 +86,7 @@ weatherApp.displayApiInfo = function (jsonData, firstPageLoad) {
   conditionsDiv.appendChild(humidity);
 
   const wind = document.createElement('p');
-  wind.textContent = `Wind: ${jsonData.wind.speed}km/h`;
+  wind.textContent = `Wind: ${Math.round(jsonData.wind.speed)} km/h`;
   conditionsDiv.appendChild(wind);
 }
 
