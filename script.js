@@ -1,9 +1,10 @@
 const weatherApp = {};
 
-weatherApp.apiUrl = "https://api.openweathermap.org/data/2.5/weather";
-weatherApp.apiKey = "75bca0532ad0bc22fa4ca7f257f8dbfe";
-
 weatherApp.getApiInfo = function (userChoice, firstPageLoad) {
+
+  weatherApp.apiUrl = "https://api.openweathermap.org/data/2.5/weather";
+  weatherApp.apiKey = "75bca0532ad0bc22fa4ca7f257f8dbfe";
+
   const url = new URL(weatherApp.apiUrl);
   url.search = new URLSearchParams({
     appid: weatherApp.apiKey,
@@ -27,20 +28,22 @@ weatherApp.getApiInfo = function (userChoice, firstPageLoad) {
 
 weatherApp.updateBackground = function (jsonDataIf) {
   const bodyElement = document.querySelector('body');
+  const weatherMain = jsonDataIf.weather[0].main;
 
-  if (jsonDataIf.weather[0].main == "Clear") {
+  // use switch statement here later on.
+  if (weatherMain === "Clear") {
     bodyElement.setAttribute('class', 'clear');
-  } else if (jsonDataIf.weather[0].main == "Clouds") {
+  } else if (weatherMain === "Clouds") {
     bodyElement.setAttribute('class', 'cloudy');
-  } else if (jsonDataIf.weather[0].main == "Drizzle") {
+  } else if (weatherMain === "Drizzle") {
     bodyElement.setAttribute('class', 'drizzle');
-  } else if (jsonDataIf.weather[0].main == "Rain") {
+  } else if (weatherMain === "Rain") {
     bodyElement.setAttribute('class', 'drizzle');
-  } else if (jsonDataIf.weather[0].main == "Snow") {
+  } else if (weatherMain === "Snow") {
     bodyElement.setAttribute('class', 'snow');
-  } else if (jsonDataIf.weather[0].main == "Fog" || "Mist" || "Smoke" || "Haze") {
+  } else if (weatherMain === "Fog" || "Mist" || "Smoke" || "Haze") {
     bodyElement.setAttribute('class', 'mist');
-  } else if (jsonDataIf.weather[0].main == "Thunderstorm") {
+  } else if (weatherMain === "Thunderstorm") {
     bodyElement.setAttribute('class', 'thunderstorm');
   }
 }
@@ -53,6 +56,7 @@ weatherApp.displayApiInfo = function (jsonData, firstPageLoad) {
 
   const cityDiv = document.querySelector('.city-div');
   cityDiv.innerHTML = "";
+  // do check later if i can use textContent instead of innerHTML here.
 
   const errorMessage = document.querySelector('.error-message');
   errorMessage.style.display = "none";
@@ -86,7 +90,7 @@ weatherApp.displayApiInfo = function (jsonData, firstPageLoad) {
   conditionsDiv.appendChild(humidity);
 
   const wind = document.createElement('p');
-  wind.textContent = `Wind: ${Math.round(jsonData.wind.speed)} km/h`;
+  wind.textContent = `Wind: ${Math.round(jsonData.wind.speed)} km/hr`;
   conditionsDiv.appendChild(wind);
 }
 
